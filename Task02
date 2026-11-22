@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    char name[10];
+
+    printf("Enter donor name: ");
+    if (fgets(name, sizeof(name), stdin) == NULL)
+        return 1;
+
+    name[strcspn(name, "\n")] = '\0';
+    printf("Donor name: %s\n", name);
+
+    return 0;
+}
+
+SAMPLE OUTPUT:
+Enter donor name: GOPINATH
+Donor name: GOPINATH
+
+Note: The PDF also demonstrates scanf("%s") with a small character array. An
+unbounded %s can overflow that array for long input, so the safer fgets()
+version is provided here.
+
